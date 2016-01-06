@@ -23,7 +23,6 @@ FieldVector.prototype.constructor = FieldVector;
 FieldVector.prototype.render = function (ctx) {
     // Get magnetic field at this point
     var B = this.space.getMagneticField(this.position, this);
-    var e_B = B.clone().normalize().multiply(50);
 
     // Style
     ctx.lineWidth = 1;
@@ -32,7 +31,7 @@ FieldVector.prototype.render = function (ctx) {
 
     // Draw an arrow in the direction of the magnetic field
     ctx.moveTo(this.x, this.y);
-    ctx.lineTo(this.x + e_B.x, this.y + e_B.y);
+    ctx.lineTo(this.x + B.x*2, this.y + B.y*2);
     ctx.stroke();
 
     // Small circle to indicate position
