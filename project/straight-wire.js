@@ -15,9 +15,9 @@ var StraightWire = function (space, x, y, settings) {
     this.settings = settings;
 
     // Current strength in amperes (A)
-    this.current = settings.current;
+    this.settings.current = settings.current || 1;
 
-    // Period if alternating current
+    // Period and phase if alternating current
     this.settings.period = settings.period || 0;
     this.settings.phase = settings.phase || 0;
 

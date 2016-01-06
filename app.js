@@ -50,9 +50,10 @@ addStraightWire.onclick = function () {
     spaceMenu.style.display = 'none';
 
     // Create straight wire
-    new StraightWire(space, parseInt(spaceMenu.style.left), parseInt(spaceMenu.style.top), {
-        current: 2
-    });
+    object = new StraightWire(space, parseInt(spaceMenu.style.left), parseInt(spaceMenu.style.top), {});
+
+    // Open settings window
+    objectSettings.onclick({x: object.x + 20, y: object.y});
 };
 
 // Add field line object handler
