@@ -13,7 +13,7 @@ var SpaceObject = function (space, x, y) {
     // Space
     this.space = space;
 
-    // Position in centimeters (cm)
+    // Position in pixels
     this.position = new Vector(x, y);
 };
 

@@ -10,6 +10,7 @@
     <script src="project/space.js"></script>
     <script src="project/space-object.js"></script>
     <script src="project/field-line.js"></script>
+    <script src="project/field-vector.js"></script>
     <script src="project/straight-wire.js"></script>
 </head>
 <body>
@@ -27,14 +28,15 @@
             <input type="number" name="current">
             <label>Period (s) - set to 0 for DC</label>
             <input type="number" name="period">
-            <label>Phase offset (between 0 and 360 degrees)</label>
-            <input type="number" name="phase" min="0" max="360">
+            <label>Phase shift (degrees)</label>
+            <input type="number" name="phase">
         </div>
     </form>
 </div>
 <!-- Space menu -->
 <ul class="menu" id="space-menu">
     <li id="add-straight-wire">Create straight wire</li>
+    <li id="add-field-vector">Show field strength at this point</li>
     <li id="add-field-line">Show field line through this point</li>
 </ul>
 <!-- Object menu -->

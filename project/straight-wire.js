@@ -39,19 +39,8 @@ StraightWire.prototype.render = function (ctx) {
 
     // Alternating current
     if (this.settings.period) {
-        this.current *= Math.cos(2*Math.PI*this.space.time/this.settings.period + this.settings.phase);
+        this.current *= Math.cos(2*Math.PI*this.space.time/this.settings.period + this.settings.phase*Math.PI/180);
     }
-
-    // Magnetic field strength at this position
-    var B = this.space.getMagneticField(this.position, this);
-
-    // Change in magnetic field strength at this element's position
-    if (this.space.delta && this.B) {
-        this.current += B.x - this.B.x;
-    }
-
-    // Update magnetic field on this frame
-    this.B = B;
 
     // Draw
     ctx.fillStyle = '#ffffff';

@@ -42,6 +42,7 @@ space.canvas.addEventListener('mousemove', function (e) {
 var spaceMenu = document.getElementById('space-menu');
 var addStraightWire = document.getElementById('add-straight-wire');
 var addFieldLine = document.getElementById('add-field-line');
+var addFieldVector = document.getElementById('add-field-vector');
 
 // Add straight wire object handler
 addStraightWire.onclick = function () {
@@ -61,6 +62,15 @@ addFieldLine.onclick = function () {
 
     // Create field line
     new FieldLine(space, parseInt(spaceMenu.style.left), parseInt(spaceMenu.style.top));
+};
+
+// Add field vector object handler
+addFieldVector.onclick = function () {
+    // Hide menu
+    spaceMenu.style.display = 'none';
+
+    // Create field vector
+    new FieldVector(space, parseInt(spaceMenu.style.left), parseInt(spaceMenu.style.top));
 };
 
 /* Object menu */
@@ -150,6 +160,14 @@ objectSettings.onclick = function (e) {
                 obj.settings.period = parseFloat(this.value);
             }
         };
+
+        // Phase
+        form.phase.value = obj.settings.phase;
+        form.phase.onchange = form.period.onkeyup = form.phase.oninput = function () {
+            if (!isNaN(this.value)) {
+                obj.settings.phase = parseFloat(this.value);
+            }
+        };
     }
 };
 
@@ -189,13 +207,9 @@ space.canvas.addEventListener('contextmenu', function (e) {
     menu.style.top = e.y + 'px';
 });
 
-// Start time
-var start = new Date;
-
 // Test
 new StraightWire(space, 510, 200, {current: 1});
-new StraightWire(space, 800, 200, {current: 1, period: 30, phase: Math.PI});
-new StraightWire(space, 550, 450, {current: 1, period: 5});
+new StraightWire(space, 800, 200, {current: 1, period: 30, phase: 180});
 
 new FieldLine(space, 250, 300);
 
@@ -206,6 +220,3 @@ window.onresize();
 setInterval(function () {
     space.render();
 }, 50);
-
-// Computation time
-console.log(new Date - start);
