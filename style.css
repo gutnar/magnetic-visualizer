@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    background-color: #000;
+}
+
+canvas {
+    display: block;
+}
+
+/* Menu */
+.menu {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    border: 1px solid #ffaa1d;
+    background: #fff5db;
+}
+
+.menu li {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.menu li:hover {
+    background-color: #fff1b0;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background: #fff5db;
+}
+
+.modal .modal-header {
+    position: relative;
+    background: #ffaa1d;
+    padding: 5px;
+    padding-right: 50px;
+    cursor: move;
+}
+
+.modal .modal-header .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    border: 0;
+    background: 0;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.modal .modal-header .close:hover {
+    color: #fff;
+}
+
+.modal .modal-body {
+    padding: 5px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-left: 1px solid;
+    border-color: #ffaa1d;
+}
+
+.modal .modal-footer {
+    padding: 5px;
+    background: #ffaa1d;
+}
+
+/* Form */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+input {
+    margin-bottom: 10px;
+}

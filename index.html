@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Electromagnetism</title>
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Project files -->
+    <script src="project/vector.js"></script>
+    <script src="project/space.js"></script>
+    <script src="project/space-object.js"></script>
+    <script src="project/field-line.js"></script>
+    <script src="project/straight-wire.js"></script>
+</head>
+<body>
+<!-- Canvas -->
+<canvas id="space"></canvas>
+<!-- Object settings -->
+<div class="modal" id="object-settings-modal">
+    <div class="modal-header">
+        Object settings
+        <button class="close">&times;</button>
+    </div>
+    <form name="objectSettings">
+        <div class="modal-body" id="straight-wire-settings-body">
+            <label>Current amplitude (A)</label>
+            <input type="number" name="current">
+            <label>Period (s) - set to 0 for DC</label>
+            <input type="number" name="period">
+            <label>Phase offset (between 0 and 360 degrees)</label>
+            <input type="number" name="phase" min="0" max="360">
+        </div>
+    </form>
+</div>
+<!-- Space menu -->
+<ul class="menu" id="space-menu">
+    <li id="add-straight-wire">Create straight wire</li>
+    <li id="add-field-line">Show field line through this point</li>
+</ul>
+<!-- Object menu -->
+<ul class="menu" id="object-menu">
+    <li id="object-settings">Settings</li>
+    <li id="remove-object">Remove object</li>
+    <li id="show-object-field-lines">Only show this object's field lines</li>
+</ul>
+<!-- Application -->
+<script src="app.js"></script>
+</body>
+</html>
