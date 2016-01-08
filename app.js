@@ -79,7 +79,6 @@ var object;
 var objectMenu = document.getElementById('object-menu');
 var objectSettings = document.getElementById('object-settings');
 var removeObject = document.getElementById('remove-object');
-var showObjectFieldLines = document.getElementById('show-object-field-lines');
 
 // Modals
 var objectSettingsModal = document.getElementById('object-settings-modal');
@@ -172,9 +171,6 @@ objectSettings.onclick = function (e) {
     }
 };
 
-// Only show selected object's field lines
-
-
 // Remove object handler
 removeObject.onclick = function () {
     // Hide menu
@@ -198,6 +194,7 @@ space.canvas.addEventListener('contextmenu', function (e) {
     // Check if object was clicked
     if (object = space.getObjectAt(e.x, e.y)) {
         menu = objectMenu;
+        objectSettings.style.display = (object instanceof StraightWire) ? 'block' : 'none';
     } else {
         menu = spaceMenu;
     }
@@ -210,7 +207,7 @@ space.canvas.addEventListener('contextmenu', function (e) {
 
 // Test
 new StraightWire(space, 510, 200, {current: 1});
-new StraightWire(space, 800, 200, {current: 1, period: 30, phase: 180});
+//new StraightWire(space, 800, 200, {current: 1, period: 30, phase: 180});
 
 new FieldLine(space, 250, 300);
 

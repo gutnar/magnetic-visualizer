@@ -42,6 +42,23 @@ StraightWire.prototype.render = function (ctx) {
         this.current *= Math.cos(2*Math.PI*this.space.time/this.settings.period + this.settings.phase*Math.PI/180);
     }
 
+    // Induced current
+    var v, B;
+
+    if (this.space.delta && this.previousPosition && !Vector.equal(this.position, this.previousPosition)) {
+        // Magnetic field at this position
+        B = this.space.getMagneticField(this.position, this);
+
+        // Velocity
+        v = Vector.difference(this.position, this.previousPosition).divide(this.space.delta);
+
+        // Induced current
+        this.current += Vector.productZ(v, B) / 63.84;
+    }
+
+    // Current position
+    this.previousPosition = this.position.clone();
+
     // Draw
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(this.x - 1, this.y - 1, 2, 2);

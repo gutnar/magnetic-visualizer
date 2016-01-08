@@ -8,7 +8,8 @@ var Space = function (canvasId) {
     this.ctx = this.canvas.getContext('2d');
 
     // Magnetic permeability (μT * pixel / A)
-    this.mu = 4*Math.PI/100*38*1000;
+    //this.mu = 4*Math.PI/100*38*1000;
+    this.mu = 4775.22083346;
 
     // Objects
     this.objects = [];

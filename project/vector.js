@@ -122,3 +122,36 @@ Vector.prototype.add = function (vector) {
 Vector.prototype.clone = function () {
     return new Vector(this.x, this.y);
 };
+
+/**
+ * Check if two vectors are equal
+ * @param a {Vector}
+ * @param b {Vector}
+ * @returns {boolean}
+ */
+
+Vector.equal = function (a, b) {
+    return a.x === b.x && a.y === b.y;
+};
+
+/**
+ * Get difference between vectors
+ * @param a {Vector}
+ * @param b {Vector}
+ * @returns {Vector}
+ */
+
+Vector.difference = function (a, b) {
+    return new Vector(a.x - b.x, a.y - b.y);
+};
+
+/**
+ * Get the z-component of the vector (cross) product of two vectors
+ * @param a {Vector}
+ * @param b {Vector}
+ * @returns {Number}
+ */
+
+Vector.productZ = function (a, b) {
+    return a.x * b.y - b.x * a.y;
+};
