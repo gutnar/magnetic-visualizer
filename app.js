@@ -206,10 +206,9 @@ space.canvas.addEventListener('contextmenu', function (e) {
 });
 
 // Test
-new StraightWire(space, 510, 200, {current: 1});
-//new StraightWire(space, 800, 200, {current: 1, period: 30, phase: 180});
-
-new FieldLine(space, 250, 300);
+new FieldLine(space, 15.5*38, 7.5*38);
+new StraightWire(space, 15.5*38, 5.5*38, {current: 1});
+new StraightWire(space, 8.5*38, 7*38, {current: 1, period: 10});
 
 // Render
 window.onresize();

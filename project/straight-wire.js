@@ -34,6 +34,11 @@ StraightWire.prototype.constructor = StraightWire;
  */
 
 StraightWire.prototype.render = function (ctx) {
+    // Velocity
+    if (this.velocity && this.space.delta) {
+        this.position.add(this.velocity.clone().multiply(this.space.delta));
+    }
+
     // Current
     this.current = this.settings.current;
 
@@ -53,7 +58,7 @@ StraightWire.prototype.render = function (ctx) {
         v = Vector.difference(this.position, this.previousPosition).divide(this.space.delta);
 
         // Induced current
-        this.current += Vector.productZ(v, B) / 63.84;
+        this.current += v.getMagnitude() * B.getMagnitude() * Math.sin(Vector.angle(B, v)) / 63.84;
     }
 
     // Current position

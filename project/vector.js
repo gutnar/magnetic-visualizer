@@ -146,12 +146,12 @@ Vector.difference = function (a, b) {
 };
 
 /**
- * Get the z-component of the vector (cross) product of two vectors
+ * Get angle between two vectors
  * @param a {Vector}
  * @param b {Vector}
- * @returns {Number}
+ * @returns {number}
  */
 
-Vector.productZ = function (a, b) {
-    return a.x * b.y - b.x * a.y;
+Vector.angle = function (a, b) {
+    return Math.acos((a.x * b.x + a.y * b.y) / a.getMagnitude() / b.getMagnitude());
 };
