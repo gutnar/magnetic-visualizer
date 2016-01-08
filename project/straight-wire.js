@@ -15,9 +15,9 @@ var StraightWire = function (space, x, y, settings) {
     this.settings = settings;
 
     // Current strength in amperes (A)
-    this.current = settings.current;
+    this.settings.current = settings.current || 1;
 
-    // Period if alternating current
+    // Period and phase if alternating current
     this.settings.period = settings.period || 0;
     this.settings.phase = settings.phase || 0;
 
@@ -34,6 +34,11 @@ StraightWire.prototype.constructor = StraightWire;
  */
 
 StraightWire.prototype.render = function (ctx) {
+    // Velocity
+    if (this.velocity && this.space.delta) {
+        this.position.add(this.velocity.clone().multiply(this.space.delta));
+    }
+
     // Current
     this.current = this.settings.current;
 
@@ -41,6 +46,23 @@ StraightWire.prototype.render = function (ctx) {
     if (this.settings.period) {
         this.current *= Math.cos(2*Math.PI*this.space.time/this.settings.period + this.settings.phase*Math.PI/180);
     }
+
+    // Induced current
+    var v, B;
+
+    if (this.space.delta && this.previousPosition && !Vector.equal(this.position, this.previousPosition)) {
+        // Magnetic field at this position
+        B = this.space.getMagneticField(this.position, this);
+
+        // Velocity
+        v = Vector.difference(this.position, this.previousPosition).divide(this.space.delta);
+
+        // Induced current
+        this.current += v.getMagnitude() * B.getMagnitude() * Math.sin(Vector.angle(B, v)) / 63.84;
+    }
+
+    // Current position
+    this.previousPosition = this.position.clone();
 
     // Draw
     ctx.fillStyle = '#ffffff';
